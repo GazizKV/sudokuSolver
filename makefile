@@ -5,6 +5,8 @@ TARGET = solver
 
 solver: solver.c
 	gcc -o $(TARGET) solver.c
+s:	solver.c
+	gcc -o $(TARGET) solver.c
 	./solver
 clean:
 	rm -rf solver *.o *~ a.out

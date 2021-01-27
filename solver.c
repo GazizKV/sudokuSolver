@@ -13,8 +13,8 @@ void print_sudoku(char **sudoku) {
 		}
 		puts("");
 		if(i==2 || i==5) {
-			for(int b=0;b<0;b++)
-				putchar(95);
+			for(int b=0;b<20;b++)
+				putchar(45);
 			puts("");
 		}
 	}
@@ -149,6 +149,7 @@ char *get_suit_valu(int x, int y, char **sudoku) {
 void solve(char **sudoku) {
 	int j;
 	char *hephen = "-";
+	int trigger = 0;
 
 	for(int i=0;i<9;i++) {
 		j=0;

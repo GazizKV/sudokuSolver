@@ -1,4 +1,8 @@
 
+27.01.2021.
+	print changied.
+	need to split functions into files headers in lib, and actuale need put solved sudoku into
+	file and named that file solvedSudoku
 26.01.2021.
 	need to change print to print with table
 	and add trigger after valideate the number
