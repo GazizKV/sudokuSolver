@@ -5,6 +5,7 @@ TARGET = solver
 
 solver: solver.c
 	gcc -o $(TARGET) solver.c
+	./solver
 clean:
 	rm -rf solver *.o *~ a.out
 install:

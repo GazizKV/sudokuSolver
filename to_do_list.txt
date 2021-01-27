@@ -1,17 +1,18 @@
+
+26.01.2021.
+	need to change print to print with table
+	and add trigger after valideate the number
+25.01.2021.
+	need to catch bag with system of solver in 1-3 4-6 7-9 range
+24.01.2021.
+	haveItSolve finished.
+18.01.2021.
+	need to chek chek funcoin's counter of fattable digit it not work
 to get value from 3 arrays
 compair and output 1 fit digit that have not equalities and hove not any the
 same equlities from other digit in range 1-9.
 
 added func to chec digit need to compare return's in range 1-9;
 
-18.01.2021.
-	need to chek chek funcoin's counter of fattable digit it not work
 correctly;
 
-24.01.2021.
-	haveItSolve finished.
-25.01.2021.
-	need to catch bag with system of solver in 1-3 4-6 7-9 range
-26.01.2021.
-	need to change print to print with table
-	and add trigger after valideate the number

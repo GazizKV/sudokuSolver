@@ -6,7 +6,17 @@
 
 void print_sudoku(char **sudoku) {
 	for(int i=0;i<9;i++) {
-		printf("%s", sudoku[i]);
+		for(int j=0; j<9; j++) {
+			printf("%c ", sudoku[i][j]);
+			if(j==2 || j==5)
+				putchar(124);
+		}
+		puts("");
+		if(i==2 || i==5) {
+			for(int b=0;b<0;b++)
+				putchar(95);
+			puts("");
+		}
 	}
 }
 
@@ -96,7 +106,6 @@ bool haveItSolve(int x, int y, char **sudoku, char *arrayOf123456789) {
 	}
 	if(inerCounter==1)
 		fit = true;
-	printf("%d-%d ", fit, inerCounter);
 	return fit;
 }
 
@@ -173,9 +182,7 @@ int main(int argc, char* argv[]){
 		scanf("%d", &trigger);
 		if(trigger)
 			break;
-
 	}
 	freeing_memory(sudoku);
-
 	return 0;
 }
