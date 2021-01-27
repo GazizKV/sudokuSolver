@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <assert.h>
 #include <stdbool.h>
 #include <string.h>
 #include <stdlib.h>
@@ -148,13 +149,12 @@ char *get_suit_valu(int x, int y, char **sudoku) {
 
 void solve(char **sudoku) {
 	int j;
-	char *hephen = "-";
 	int trigger = 0;
 
 	for(int i=0;i<9;i++) {
 		j=0;
 		for(j=0;j<9;j++) {
-			if (sudoku[i][j] != *hephen)
+			if (sudoku[i][j] != 45)
 				continue;
 			sudoku[i][j] = *get_suit_valu(i, j, sudoku);
 		}
@@ -169,10 +169,34 @@ void freeing_memory(char **sudoku) {
 	puts("Memory for char  **sudoku freed && end the programm");
 }
 
+int trigger(char **sudoku) {
+	int result;
+
+	result = 1;
+	for(int i=0;i<9;i++) {
+		for(int j=0;j<9;j++) {
+			if(sudoku[i][j] == 45)
+				result = 0;
+		}
+	}
+	return result;
+}
+
+void writeSudokuToFile(char **sudoku) {
+	FILE* fd_write = fopen("sudoku", "a");
+	assert(fd_write);
+	for(int i=0;i<9;i++) {
+		for(int j=0;j<9;j++) {
+			fwrite(sudoku, sizeof sudoku[i][j], 1, fd_write);
+		}
+		puts("");
+	}
+	fclose(fd_write);
+}
+
 int main(int argc, char* argv[]){
 	FILE *fd_sudoku;
 	char **sudoku;
-	int trigger;
 
 	sudoku = allocating_memory(fd_sudoku);
 	fd_sudoku = open_pruv_file("sudoku");
@@ -180,10 +204,12 @@ int main(int argc, char* argv[]){
 	while(true) {
 		print_sudoku(sudoku);
 		solve(sudoku);
-		scanf("%d", &trigger);
-		if(trigger)
+		if(trigger(sudoku))
 			break;
 	}
+	print_sudoku(sudoku);
+	writeSudokuToFile(sudoku);
+	print_sudoku(sudoku);
 	freeing_memory(sudoku);
 	return 0;
 }
