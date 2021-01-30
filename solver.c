@@ -201,13 +201,13 @@ int main(int argc, char* argv[]){
 	sudoku = allocating_memory(fd_sudoku);
 	fd_sudoku = open_pruv_file("sudoku");
 	read_file_to_sudoku(sudoku, fd_sudoku);
+	puts("first");
 	while(true) {
 		print_sudoku(sudoku);
 		solve(sudoku);
 		if(trigger(sudoku))
 			break;
 	}
-	print_sudoku(sudoku);
 	writeSudokuToFile(sudoku);
 	print_sudoku(sudoku);
 	freeing_memory(sudoku);

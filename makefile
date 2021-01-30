@@ -3,7 +3,7 @@ TARGET = solver
 
 .PHONY: all clean install uninstall
 
-solver: solver.c
+make: solver.c
 	gcc -o $(TARGET) solver.c
 s:	solver.c
 	gcc -o $(TARGET) solver.c
