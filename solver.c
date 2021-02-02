@@ -185,11 +185,21 @@ int trigger(char **sudoku) {
 void writeSudokuToFile(char **sudoku) {
 	FILE* fd_write = fopen("sudoku", "a");
 	assert(fd_write);
+	putc(sudoku[0][9], fd_write);
 	for(int i=0;i<9;i++) {
 		for(int j=0;j<9;j++) {
-			fwrite(sudoku, sizeof sudoku[i][j], 1, fd_write);
+			putc(32, fd_write);
+			putc(sudoku[i][j], fd_write);
+			if(j==2 || j==5)
+				putc(124, fd_write);
+			if(j==8)
+				putc(10, fd_write);
 		}
-		puts("");
+		if(i==2 || i==5) {
+			for(int f=0;f<20;f++)
+				fputc(45, fd_write);
+			fputc(10, fd_write);
+		}
 	}
 	fclose(fd_write);
 }
@@ -201,7 +211,6 @@ int main(int argc, char* argv[]){
 	sudoku = allocating_memory(fd_sudoku);
 	fd_sudoku = open_pruv_file("sudoku");
 	read_file_to_sudoku(sudoku, fd_sudoku);
-	puts("first");
 	while(true) {
 		print_sudoku(sudoku);
 		solve(sudoku);

@@ -10,6 +10,7 @@ s:	solver.c
 	./solver
 clean:
 	rm -rf solver *.o *~ a.out
+	cp sudoku1 sudoku
 install:
 	install $(TARGET) $(PREFIX)
 uninstall:
