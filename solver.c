@@ -209,7 +209,7 @@ int main(int argc, char* argv[]){
 	char **sudoku;
 
 	sudoku = allocating_memory(fd_sudoku);
-	fd_sudoku = open_pruv_file("sudoku");
+	fd_sudoku = open_pruv_file("sudoku.txt");
 	read_file_to_sudoku(sudoku, fd_sudoku);
 	while(true) {
 		print_sudoku(sudoku);
