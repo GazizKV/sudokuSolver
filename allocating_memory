@@ -1,0 +1,16 @@
+char** allocating_memory(FILE *fd_sudoku);
+
+char** allocating_memory(FILE *fd_sudoku) {
+	char **sudoku = calloc(9, sizeof(char*));
+	for(int i=0;i<9;i++)
+	{
+		sudoku[i] = calloc(11, sizeof(char));
+		printf("%ls", &i);
+	}
+	if ( sudoku==NULL) {
+		printf("Can not allocating memory\n");
+		exit (1);
+	}
+	printf("Memory allocating\n");
+	return sudoku;
+}

@@ -4,93 +4,13 @@
 #include <string.h>
 #include <stdlib.h>
 #include <math.h>
-
-void print_sudoku(char **sudoku) {
-	for(int i=0;i<9;i++) {
-		for(int j=0; j<9; j++) {
-			printf("%c ", sudoku[i][j]);
-			if(j==2 || j==5)
-				putchar(124);
-		}
-		puts("");
-		if(i==2 || i==5) {
-			for(int b=0;b<20;b++)
-				putchar(45);
-			puts("");
-		}
-	}
-}
-
-char** allocating_memory(FILE *fd_sudoku) {
-	char **sudoku = calloc(9, sizeof(char*));
-	for(int i=0;i<9;i++)
-	{
-		sudoku[i] = calloc(11, sizeof(char));
-		printf("%ls", &i);
-	}
-	if ( sudoku==NULL) {
-		printf("Can not allocating memory\n");
-		exit (1);
-	}
-	printf("Memory allocating\n");
-	return sudoku;
-}
-
-FILE *open_pruv_file(char *file_name) {
-	FILE *fd_sudoku;
-	fd_sudoku=fopen(file_name, "r");
-	if (fd_sudoku == 0) {
-		printf("Cannot open file\n");
-		exit(1);
-	}
-	puts("File open by file stream name fd_sudoku\n");
-	return fd_sudoku;
-}
-
-char **read_file_to_sudoku(char **sudoku, FILE *fd_sudoku) {
-	int i;
-
-	i = 0;
-	while (fgets(*sudoku, 11, fd_sudoku) != NULL) {
-		printf("%s", *sudoku++);
-	}
-	puts("\n");
-	if (feof(fd_sudoku))
-		puts("End of file reached");
-	printf("File readed to char **sudoku\n\n");
-	fclose(fd_sudoku);
-	return sudoku;
-}
-
-int chek_horisontal(char digit, char **sudoku, int x) {
-	int result = 0;
-	for(int i=0;i<9;i++) {
-		if(digit==sudoku[x][i]) result=1;
-	}
-	return result;
-}
-
-int chek_vertikal(char digit, char **sudoku, int y) {
-	int result = 0;
-	for(int i=0;i<9;i++) {
-		if(digit==sudoku[i][y]) result=1;
-	}
-	return result;
-}
-
-int chek_square(char digit, char **sudoku, int x, int y) {
-	int result = 0;
-	int fromX = x/3*3;
-	int fromY = y/3*3;
-
-	for(int i=fromX;i<fromX+3;i++) {
-		for(int j=fromY;j<fromY+3;j++) {
-			if(digit==sudoku[i][j])
-				result=1;
-		}
-	}
-	return result;
-}
+#include "print_sudoku"
+#include "allocating_memory"
+#include "open_pruv_file"
+#include "read_file_to_sudoku"
+#include "chek_horisontal"
+#include "chek_vertikal"
+#include "chek_square"
 
 bool haveItSolve(int x, int y, char **sudoku, char *arrayOf123456789) {
 	bool fit = false;

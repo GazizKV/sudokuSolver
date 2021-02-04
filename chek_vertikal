@@ -1,0 +1,9 @@
+int chek_vertikal(char digit, char **sudoku, int y);
+
+int chek_vertikal(char digit, char **sudoku, int y) {
+	int result = 0;
+	for(int i=0;i<9;i++) {
+		if(digit==sudoku[i][y]) result=1;
+	}
+	return result;
+}

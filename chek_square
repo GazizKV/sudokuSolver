@@ -1,0 +1,15 @@
+int chek_square(char digit, char **sudoku, int x, int y);
+
+int chek_square(char digit, char **sudoku, int x, int y) {
+	int result = 0;
+	int fromX = x/3*3;
+	int fromY = x/3*3;
+
+	for(int i=fromX;i<fromX+3;i++) {
+		for(int j=fromY;j<fromY+3;j++) {
+			if(digit==sudoku[i][j])
+				result=1;
+		}
+	}
+	return result;
+}

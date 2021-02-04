@@ -1,0 +1,12 @@
+FILE *open_pruv_file(char *file_name);
+
+FILE *open_pruv_file(char *file_name) {
+	FILE *fd_sudoku;
+	fd_sudoku=fopen(file_name, "r");
+	if (fd_sudoku == 0) {
+		printf("Cannot open file\n");
+		exit(1);
+	}
+	puts("File open by file stream name fd_sudoku\n");
+	return fd_sudoku;
+}

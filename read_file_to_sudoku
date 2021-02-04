@@ -1,0 +1,16 @@
+char **read_file_to_sudoku(char **sudoku, FILE *fd_sudoku);
+
+char **read_file_to_sudoku(char **sudoku, FILE *fd_sudoku) {
+	int i;
+
+	i = 0;
+	while (fgets(*sudoku, 11, fd_sudoku) != NULL) {
+		printf("%s", *sudoku++);
+	}
+	puts("\n");
+	if (feof(fd_sudoku))
+		puts("End of file reached");
+	printf("File readed to char **sudoku\n\n");
+	fclose(fd_sudoku);
+	return sudoku;
+}
