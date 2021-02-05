@@ -1,0 +1,16 @@
+void solve(char **sudoku);
+
+void solve(char **sudoku) {
+	int j;
+	int trigger = 0;
+
+	for(int i=0;i<9;i++) {
+		j=0;
+		for(j=0;j<9;j++) {
+			if (sudoku[i][j] != 45)
+				continue;
+			sudoku[i][j] = *get_suit_valu(i, j, sudoku);
+		}
+		puts("\n");
+	}
+}

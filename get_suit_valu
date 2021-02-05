@@ -1,0 +1,20 @@
+char *get_suit_valu(int x, int y, char **sudoku);
+
+char *get_suit_valu(int x, int y, char **sudoku) {
+	char *arrayOf123456789 = "123456789";
+	int i, j;
+	char *result = "-";
+	char *arrayOfFitable;
+
+	int fittable_counter = 0;
+	arrayOfFitable = calloc(9, sizeof(char*));
+	if(haveItSolve(x, y, sudoku, arrayOf123456789)) {
+		result = getValueOfFit(x, y, sudoku, arrayOf123456789);
+	} else {
+		result = "-";
+	}
+
+	free(arrayOfFitable);
+	return result;
+	
+}

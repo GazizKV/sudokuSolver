@@ -1,0 +1,8 @@
+void freeing_memory(char **sudoku);
+
+void freeing_memory(char **sudoku) {
+	for(int i=0;i<9;i++)
+		free(sudoku[i]);
+	free(sudoku);
+	puts("Memory for char  **sudoku freed && end the programm");
+}

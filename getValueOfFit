@@ -1,0 +1,19 @@
+char *getValueOfFit(int x, int y, char **sudoku, char *arrayOf123456789);
+
+char *getValueOfFit(int x, int y, char **sudoku, char *arrayOf123456789) {
+	int fittable_counter = 0;
+	char *result;
+
+	result = "-";
+	for (int i=0;i<9;i++) {
+		fittable_counter=0;
+		fittable_counter += chek_horisontal(arrayOf123456789[i], sudoku, x);
+		fittable_counter += chek_vertikal(arrayOf123456789[i], sudoku, y);
+		fittable_counter += chek_square(arrayOf123456789[i], sudoku, x, y);
+		if(fittable_counter==0) {
+			result = &arrayOf123456789[i];
+			break;
+		}
+	}
+	return result;
+}
